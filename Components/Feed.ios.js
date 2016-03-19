@@ -7,8 +7,9 @@
   RefreshControl
 } = React;
 
-var Loader = require('react-native-angular-activity-indicator');
-var Story = require('./Story');
+//var Loader = require('react-native-angular-activity-indicator');
+var Loader = null;
+var Story = require('./Story.ios');
 var Feed = React.createClass({
 
 
@@ -34,7 +35,7 @@ var Feed = React.createClass({
         })
          res(filtered);
       })
-      
+
     },
 
     fetchData() {
@@ -43,8 +44,8 @@ var Feed = React.createClass({
       fetch(`http://trevor-producer-cdn.api.bbci.co.uk/content${this.props.collection || '/cps/news/world'}`)
       .then((response) => response.json())
       .then((responseData) => this.filterNews(responseData.relations))
-      .then((newsItems) => 
-      { 
+      .then((newsItems) =>
+      {
           this.setState({
             dataSource: this.state.dataSource.cloneWithRows(newsItems),
             loaded: true,
@@ -52,7 +53,7 @@ var Feed = React.createClass({
             isAnimating: false
           })
 
-      
+
     }).done();
   },
 
@@ -84,7 +85,7 @@ var Feed = React.createClass({
         renderRow={this.renderStories}
         style={styles.listView}
         contentInset={{top: 0, left: 0, bottom: 64, right: 0} }
- 
+
         scrollEventThrottle={200}
         {...this.props}
         refreshControl={

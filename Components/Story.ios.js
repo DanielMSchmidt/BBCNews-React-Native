@@ -8,13 +8,16 @@
   TouchableHighlight,
 } = React;
 
-import Feed from './Feed';
-var StoryDetail = require('./StoryDetail');
+// import Feed from './Feed.ios';
+// var StoryDetail = require('./StoryDetail.ios');
+const Feed = null;
+const StoryDetail = null;
+
 
 var moment = require('moment');
 
 export default class Story extends React.Component {
-  
+
   static propTypes = {
     name: React.PropTypes.string,
   };
@@ -72,12 +75,12 @@ export default class Story extends React.Component {
         <View testID={"Story"}>
             <View style={styles.container}>
               <View style={styles.imageContainer}>
-                <Image source={{uri: story.content.relations[0].content.href}} style={styles.thumbnail} />
+                <Image source={{uri: story.content.relations[0].content.href}} />
               </View>
             </View>
 
             <View style={styles.textView}>
-              <Text style={styles.headline}>{story.content.name}</Text>
+              <Text>{story.content.name}</Text>
               <View style={styles.details}>
                 <Text style={styles.timeStamp}>{time}</Text>
                 <Text style={styles.border}>|</Text>
